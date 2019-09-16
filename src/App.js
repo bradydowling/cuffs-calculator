@@ -23,18 +23,27 @@ class App extends React.Component {
     this.setState({ value });
   }
 
+  getDateDiff() {
+    var dashReplacer = /-/gi;
+    const date1 = new Date(this.state.cuffDate.replace(dashReplacer, '/'));
+    const date2 = new Date(this.state.releaseDate.replace(dashReplacer, '/'));
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           When did you get cuffed?
-          <input type="date" name="cuff-date" onInput={e => { this.cuffDate(e.target.value); }}></input>
+          <input type="date" name="cuff-date" onInput={e => { this.cuffDateChange(e.target.value); }}></input>
           Day of Freedom (Vesting date aka release date):
           <input type="date" name="freedom-date" onInput={e => { this.freedomDateChange(e.target.value); }}></input>
           Handcuff value (signing bonus, move cost, etc)
           <input type="number" name="cuff-value" min="0" step="1000" defaultValue="30" onChange={e => { this.valueChange(e.target.value); }}></input>
           If you left today, you would owe:
-          {this.state.releaseDate}
+          {this.getDateDiff()}
         </header>
       </div>
     );
