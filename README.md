@@ -1,7 +1,6 @@
 ## TODO
 
 - Add page title
-- Add local storage
 - Handle vesting dates in the past
 - Improve styles
 - Add favicon

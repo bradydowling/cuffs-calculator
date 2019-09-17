@@ -63,11 +63,11 @@ class App extends React.Component {
           <h1>Golden Handcuff Calculator</h1>
           <p>Determine the current value of the golden handcuffs you wear. This will tell you exactly how much money you'll owe your current company if you leave today.</p>
           <label for="start-date">Current job start date</label>
-          <input type="date" name="start-date" onInput={e => { this.cuffDateChange(e.target.value); }}></input>
+          <input type="date" name="start-date" value={this.state.cuffDate} onInput={e => { this.cuffDateChange(e.target.value); }}></input>
           <label for="vesting-date">Vesting date</label>
-          <input type="date" name="vesting-date" onInput={e => { this.freedomDateChange(e.target.value); }}></input>
+          <input type="date" name="vesting-date" value={this.state.releaseDate} onInput={e => { this.freedomDateChange(e.target.value); }}></input>
           <label for="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
-          <input type="number" name="cuff-value" min="0" step="1" defaultValue="1000" onChange={e => { this.valueChange(e.target.value); }}></input>
+          <input type="number" name="cuff-value" value={this.state.value} min="0" step="1" defaultValue="1000" onChange={e => { this.valueChange(e.target.value); }}></input>
           <p>If you left today, you would owe</p>
           <p>{this.getCuffValue()}</p>
         </header>
