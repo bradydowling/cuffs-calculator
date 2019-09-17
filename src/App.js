@@ -5,22 +5,25 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: 1000,
-      cuffDate: null,
-      releaseDate: null
+      value: localStorage.getItem('cuffValue'),
+      cuffDate: localStorage.getItem('cuffDate'),
+      releaseDate: localStorage.getItem('releaseDate')
     };
   }
 
   cuffDateChange(cuffDate) {
     this.setState({ cuffDate });
+    localStorage.setItem('cuffDate', cuffDate);
   }
 
   freedomDateChange(releaseDate) {
     this.setState({ releaseDate });
+    localStorage.setItem('releaseDate', releaseDate);
   }
 
   valueChange(value) {
     this.setState({ value });
+    localStorage.setItem('cuffValue', value);
   }
 
   getCuffTimeDetails() {
