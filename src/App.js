@@ -5,7 +5,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: localStorage.getItem('cuffValue'),
+      value: localStorage.getItem('cuffValue') || 1000,
       cuffDate: localStorage.getItem('cuffDate'),
       releaseDate: localStorage.getItem('releaseDate')
     };
@@ -73,7 +73,7 @@ class App extends React.Component {
           <label for="vesting-date">Vesting date</label>
           <input type="date" name="vesting-date" value={this.state.releaseDate} onInput={e => { this.freedomDateChange(e.target.value); }}></input>
           <label for="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
-          <input type="number" name="cuff-value" value={this.state.value} min="0" step="1" defaultValue="1000" onChange={e => { this.valueChange(e.target.value); }}></input>
+          <input type="number" name="cuff-value" value={this.state.value} min="0" step=".01" defaultValue="1000" onChange={e => { this.valueChange(e.target.value); }}></input>
           <p>If you left today, you would owe</p>
           <p>{this.getCuffValue()}</p>
         </header>
