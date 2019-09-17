@@ -53,7 +53,13 @@ class App extends React.Component {
       return '$0';
     }
     const cuffValue = cuffDetails.remaining / cuffDetails.total * this.state.value;
-    return `$${Math.round(100 * cuffValue) / 100}`;
+    return `$${this.numberWithCommas(cuffValue.toFixed(2))}`;
+  }
+
+  numberWithCommas(x) {
+    let parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
   }
 
   render() {
