@@ -57,6 +57,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
+          <h1>Golden Handcuff Calculator</h1>
+          <p>Determine the current value of the golden handcuffs you wear. This will tell you exactly how much money you'll owe your current company if you leave today.</p>
           <label for="start-date">Current job start date</label>
           <input type="date" name="start-date" onInput={e => { this.cuffDateChange(e.target.value); }}></input>
           <label for="vesting-date">Vesting date</label>
