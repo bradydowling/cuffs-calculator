@@ -47,23 +47,24 @@ class App extends React.Component {
   getCuffValue() {
     const cuffDetails = this.getCuffTimeDetails();
     if (!cuffDetails.remaining || !cuffDetails.total || !this.state.value) {
-      return 0;
+      return '$0';
     }
-    return cuffDetails.remaining / cuffDetails.total * this.state.value;
+    const cuffValue = cuffDetails.remaining / cuffDetails.total * this.state.value;
+    return `$${Math.round(100 * cuffValue) / 100}`;
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          When did you get cuffed?
-          <input type="date" name="cuff-date" onInput={e => { this.cuffDateChange(e.target.value); }}></input>
-          Day of Freedom (Vesting date aka release date):
-          <input type="date" name="freedom-date" onInput={e => { this.freedomDateChange(e.target.value); }}></input>
-          Handcuff value (signing bonus, move cost, etc)
-          <input type="number" name="cuff-value" min="0" step="1000" defaultValue="30" onChange={e => { this.valueChange(e.target.value); }}></input>
-          If you left today, you would owe:
-          {this.getCuffValue()}
+          <label for="start-date">Current job start date</label>
+          <input type="date" name="start-date" onInput={e => { this.cuffDateChange(e.target.value); }}></input>
+          <label for="vesting-date">Vesting date</label>
+          <input type="date" name="vesting-date" onInput={e => { this.freedomDateChange(e.target.value); }}></input>
+          <label for="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
+          <input type="number" name="cuff-value" min="0" step="1" defaultValue="1000" onChange={e => { this.valueChange(e.target.value); }}></input>
+          <p>If you left today, you would owe</p>
+          <p>{this.getCuffValue()}</p>
         </header>
       </div>
     );
