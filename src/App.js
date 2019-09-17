@@ -5,7 +5,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: 0,
+      value: 1000,
       cuffDate: null,
       releaseDate: null
     };
