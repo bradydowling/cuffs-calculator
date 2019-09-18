@@ -7,11 +7,12 @@
 - Handle vesting dates in the past
 - Restructure components, css, etc.
 - Improve defaulting
- - Stored in stated in pulled into UI
+ ✅ Stored in state pulled into UI
  - Start: 1 year in the past
  - End: 1 year in the future
  - Total handcuff value: $1000
 - Add daily handcuff value depreciation
+- Add burndown chart
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
