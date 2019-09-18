@@ -1,9 +1,10 @@
 ## TODO
 
 - Add page title
-- Handle vesting dates in the past
+
 - Improve styles
-- Add favicon
+✅ [ Generated favicon](https://favicon.io/favicon-generator/?t=C*C&ff=Black+Ops+One&fs=55&fc=%23FFFFFF&b=rounded&bc=%23A00)
+- Handle vesting dates in the past
 - Restructure components, css, etc.
 - Improve defaulting
  - Stored in stated in pulled into UI
