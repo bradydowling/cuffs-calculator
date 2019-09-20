@@ -1,6 +1,26 @@
 import React from 'react';
 import './App.css';
 
+const Footer = () => (
+  <footer>
+    Copyright Brady Dowling © 2019
+  </footer>
+);
+
+const content = {
+  definition: [
+    `The term "Golden Handcuffs" is often used to refer to benefits that are so good that the employee is nearly bound to them (though they can legally leave at any time).`,
+    `This can be in the form of a signing bonus, moving expenses, or something else must be paid back if the employee does not reach a certain tenure. It could also refer to benefits that will be received if the employee stays for a certain amount of time. Lastly, it could just be that the benefits in general are so good that you don't want to leave.`,
+    `This calculator is, of course, for the kind that vest.`
+  ],
+  background: [
+    `A short while back I moved from Seattle to Boston as part of an intracompany transfer which Jeff B so kindly paid for (thanks Jeff). Now that I'm considering other opportunities, I often calculate what it would cost me if I decided to leave before I hit my magic two year mark. Hence this page was born. Hopefully it can help you too!`
+  ],
+  pitch: [
+    `I'm a full-stack engineer and I'm looking around. I especially enjoy working on tools (come from an IDE and data labeling background) and bonus points if I get to be the user (e.g. Cuffs Calculator). I love working with, learning from, and teaching other people. I'm open to local or remote opportunities. Reach out if you're interested in chatting.`
+  ]
+};
+
 class App extends React.Component {
   constructor() {
     super();
@@ -67,16 +87,39 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>Golden Handcuff Calculator</h1>
-          <p>Determine the current value of the golden handcuffs you wear. This will tell you exactly how much money you'll owe your current company if you leave today.</p>
-          <label for="start-date">Current job start date</label>
-          <input type="date" name="start-date" value={this.state.cuffDate} onInput={e => { this.cuffDateChange(e.target.value); }}></input>
-          <label for="vesting-date">Vesting date</label>
-          <input type="date" name="vesting-date" value={this.state.releaseDate} onInput={e => { this.freedomDateChange(e.target.value); }}></input>
-          <label for="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
-          <input type="number" name="cuff-value" value={this.state.value} min="0" step=".01" defaultValue="1000" onChange={e => { this.valueChange(e.target.value); }}></input>
+          <p>Determine the current value of your golden handcuffs</p>
+        </header>
+        <section className="calculator">
+          <div className="prompt">
+            <label for="start-date">Current job start date</label>
+            <input type="date" name="start-date" value={this.state.cuffDate} onInput={e => { this.cuffDateChange(e.target.value); }}></input>
+          </div>
+          <div className="prompt">
+            <label for="vesting-date">Vesting date</label>
+            <input type="date" name="vesting-date" value={this.state.releaseDate} onInput={e => { this.freedomDateChange(e.target.value); }}></input>
+          </div>
+          <div className="prompt">
+            <label for="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
+            <input type="number" name="cuff-value" value={this.state.value} min="0" step=".01" defaultValue="1000" onChange={e => { this.valueChange(e.target.value); }}></input>
+          </div>
           <p>If you left today, you would owe</p>
           <p>{this.getCuffValue()}</p>
-        </header>
+        </section>
+        <section className="content">
+          <h2>Definition</h2>
+          <p>{content.definition[0]}</p>
+          <p>{content.definition[1]}</p>
+          <p>{content.definition[2]}</p>
+        </section>
+        <section className="content">
+          <h2>Background</h2>
+          <p>{content.background[0]}</p>
+        </section>
+        <section className="content">
+          <h2>Shameless Plug</h2>
+          <p>{content.pitch[0]}</p>
+        </section>
+        <Footer />
       </div>
     );
   }
