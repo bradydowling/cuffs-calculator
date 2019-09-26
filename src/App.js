@@ -89,22 +89,24 @@ class App extends React.Component {
           <h1>Golden Handcuff Calculator</h1>
           <p>Determine the current value of your golden handcuffs</p>
         </header>
-        <section className="calculator">
-          <div className="prompt">
-            <label for="start-date">Current job start date</label>
-            <input type="date" name="start-date" value={this.state.cuffDate} onInput={e => { this.cuffDateChange(e.target.value); }}></input>
-          </div>
-          <div className="prompt">
-            <label for="vesting-date">Vesting date</label>
-            <input type="date" name="vesting-date" value={this.state.releaseDate} onInput={e => { this.freedomDateChange(e.target.value); }}></input>
-          </div>
-          <div className="prompt">
-            <label for="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
-            <input type="number" name="cuff-value" value={this.state.value} min="0" step=".01" defaultValue="1000" onChange={e => { this.valueChange(e.target.value); }}></input>
-          </div>
-          <p>If you left today, you would owe</p>
-          <p>{this.getCuffValue()}</p>
-        </section>
+        <div className="calculator-wrapper">
+          <section className="calculator">
+            <div className="prompt">
+              <label htmlFor="start-date">Current job start date</label>
+              <input type="date" name="start-date" value={this.state.cuffDate} onChange={e => { this.cuffDateChange(e.target.value); }}></input>
+            </div>
+            <div className="prompt">
+              <label htmlFor="vesting-date">Vesting date</label>
+              <input type="date" name="vesting-date" value={this.state.releaseDate} onChange={e => { this.freedomDateChange(e.target.value); }}></input>
+            </div>
+            <div className="prompt">
+              <label htmlFor="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
+              <input type="number" name="cuff-value" value={this.state.value} min="0" step=".01" onChange={e => { this.valueChange(e.target.value); }}></input>
+            </div>
+            <p>If you left today, you would miss out on:</p>
+            <p>{this.getCuffValue()}</p>
+          </section>
+        </div>
         <section className="content">
           <h2>Definition</h2>
           <p>{content.definition[0]}</p>
