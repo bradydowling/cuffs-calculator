@@ -10,8 +10,7 @@ const Footer = () => (
 const content = {
   definition: [
     `The term "Golden Handcuffs" refers to benefits that are so good that the employee is nearly bound to them (though they can legally leave at any time).`,
-    `This could be a signing bonus, moving expenses, or something else that the employee receives upon hire but must be paid back if the employee does not reach a certain tenure. It could also refer to benefits that will be received if the employee stays for a certain amount of time. Lastly, it could just be that the benefits in general are so good that you don't want to leave.`,
-    `This calculator is, of course, for the kind that vest.`
+    `This could be a signing bonus, moving expenses, or anything the employee receives upon hire but must be paid back if the employee does not reach a certain tenure. It may also refer to benefits that will be received only once the employee reaches a certain tenure.`
   ],
   background: [
     `A short while back I moved from Seattle to Boston as part of an intracompany transfer which Jeff B so kindly paid for (thanks Jeff). Now that I'm considering other opportunities, I often calculate what it would cost me if I decided to leave before I hit my magic two year mark. Hence this page was born. Hopefully it can help you too!`
@@ -113,7 +112,6 @@ class App extends React.Component {
           <h2>Definition</h2>
           <p>{content.definition[0]}</p>
           <p>{content.definition[1]}</p>
-          <p>{content.definition[2]}</p>
         </section>
         <section className="content">
           <h2>Background</h2>
