@@ -1,6 +1,7 @@
 .App-header {
-  background-color: #282c34;
+  background-color: #A30B06;
   color: white;
+  text-align: center;
 }
 
 .calculator-wrapper {
@@ -12,7 +13,7 @@
 .calculator {
   display: flex;
   flex-direction: column;
-  font-size: calc(10px + 2vmin);
+  min-width: 200px;
   text-align: left;
 }
 
@@ -24,13 +25,24 @@
 }
 
 .calculator label {
-  padding: 20px 0 20px;
   display: block;
+  padding: 1rem 0 .25rem;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 .calculator input {
-  min-width: 200px;
+  width: 100%;
   border-radius: 3px;
+  display:block;
+  border:2px solid #2980B9;
+  padding:.5rem;
+  font-size:18px;
+}
+
+.calculator .results {
+  font-size: calc(10px + 2vmin);
+  text-align: center;
 }
 
 .content, footer {

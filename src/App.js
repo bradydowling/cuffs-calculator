@@ -103,8 +103,10 @@ class App extends React.Component {
               <label htmlFor="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
               <input type="number" name="cuff-value" value={this.state.value} min="0" step=".01" onChange={e => { this.valueChange(e.target.value); }}></input>
             </div>
-            <p>If you left today, you would miss out on:</p>
-            <p>{this.getCuffValue()}</p>
+            <div className="results">
+              <p>If you left today, you would miss out on:</p>
+              <p>{this.getCuffValue()}</p>
+            </div>
           </section>
         </div>
         <section className="content">
