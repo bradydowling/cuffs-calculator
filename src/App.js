@@ -9,8 +9,8 @@ const Footer = () => (
 
 const content = {
   definition: [
-    `The term "Golden Handcuffs" is often used to refer to benefits that are so good that the employee is nearly bound to them (though they can legally leave at any time).`,
-    `This can be in the form of a signing bonus, moving expenses, or something else must be paid back if the employee does not reach a certain tenure. It could also refer to benefits that will be received if the employee stays for a certain amount of time. Lastly, it could just be that the benefits in general are so good that you don't want to leave.`,
+    `The term "Golden Handcuffs" refers to benefits that are so good that the employee is nearly bound to them (though they can legally leave at any time).`,
+    `This could be a signing bonus, moving expenses, or something else that the employee receives upon hire but must be paid back if the employee does not reach a certain tenure. It could also refer to benefits that will be received if the employee stays for a certain amount of time. Lastly, it could just be that the benefits in general are so good that you don't want to leave.`,
     `This calculator is, of course, for the kind that vest.`
   ],
   background: [

@@ -1,16 +1,11 @@
 ## TODO
 
-- Add page title
-
-- Improve styles
-✅ [ Generated favicon](https://favicon.io/favicon-generator/?t=C*C&ff=Black+Ops+One&fs=55&fc=%23FFFFFF&b=rounded&bc=%23A00)
-- Handle vesting dates in the past
 - Restructure components, css, etc.
+- Allow relative vesting amount (number input and dropdown for months or years)
+- Handle vesting dates in the past
 - Improve defaulting
- ✅ Stored in state pulled into UI
  - Start: 1 year in the past
  - End: 1 year in the future
- - Total handcuff value: $1000
 - Add daily handcuff value depreciation
 - Add burndown chart
 
