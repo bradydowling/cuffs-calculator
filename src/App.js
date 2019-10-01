@@ -3,7 +3,7 @@ import './App.css';
 
 const Footer = () => (
   <footer>
-    Copyright Brady Dowling © 2019
+    <p>Copyright <a href="https://registry.jsonresume.org/bradydowling">Brady Dowling</a> © 2019</p>
   </footer>
 );
 
@@ -13,10 +13,7 @@ const content = {
     `This could be a signing bonus, moving expenses, or anything the employee receives upon hire but must be paid back if the employee does not reach a certain tenure. It may also refer to benefits that will be received only once the employee reaches a certain tenure.`
   ],
   background: [
-    `A short while back I moved from Seattle to Boston as part of an intracompany transfer which Jeff B so kindly paid for (thanks Jeff). Now that I'm considering other opportunities, I often calculate what it would cost me if I decided to leave before I hit my magic two year mark. Hence this page was born. Hopefully it can help you too!`
-  ],
-  pitch: [
-    `I'm a full-stack engineer and I'm looking around. I especially enjoy working on tools (come from an IDE and data labeling background) and bonus points if I get to be the user (e.g. Cuffs Calculator). I love working with, learning from, and teaching other people. I'm open to local or remote opportunities. Reach out if you're interested in chatting.`
+    `I recently moved from Seattle to Boston as part of an intracompany transfer which Jeff B so kindly paid for. Now that I'm considering other opportunities, I often calculate what it would cost me if I decided to leave before I hit my magic two year mark. Hence this page was born. Hopefully it can help you too!`
   ]
 };
 
@@ -116,10 +113,6 @@ class App extends React.Component {
         <section className="content">
           <h2>Background</h2>
           <p>{content.background[0]}</p>
-        </section>
-        <section className="content">
-          <h2>Shameless Plug</h2>
-          <p>{content.pitch[0]}</p>
         </section>
         <Footer />
       </div>
