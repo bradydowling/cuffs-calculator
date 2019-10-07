@@ -51,7 +51,7 @@
 }
 
 .calculator .prompt input:active, .calculator .prompt input:focus {
-  padding-bottom: .4;
+  padding-bottom: .4rem;
   border-bottom: .16667rem solid;
   border-bottom-color: #3139f2;
 }
