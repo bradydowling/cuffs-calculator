@@ -9,11 +9,7 @@ const Footer = () => (
 
 const content = {
   definition: [
-    `The term "Golden Handcuffs" refers to benefits that are so good that the employee is nearly bound to them (though they can legally leave at any time).`,
-    `This could be a signing bonus, moving expenses, or anything the employee receives upon hire but must be paid back if the employee does not reach a certain tenure. It may also refer to benefits that will be received only once the employee reaches a certain tenure.`
-  ],
-  background: [
-    `I recently moved from Seattle to Boston as part of an intracompany transfer which Jeff B so kindly paid for. Now that I'm considering other opportunities, I often calculate what it would cost me if I decided to leave before I hit my magic two year mark. Hence this page was born. Hopefully it can help you too!`
+    `An employee's benefits (signing bonus, moving expenses, salary) can be so good that the employee feels bound or cuffed to them even though they can legally leave at any time.`,
   ]
 };
 
@@ -83,7 +79,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>Golden Handcuff Calculator</h1>
-          <p>Determine the current value of your golden handcuffs</p>
+          <p>{content.definition[0]}</p>
         </header>
         <div className="calculator-wrapper">
           <section className="calculator">
@@ -101,19 +97,10 @@ class App extends React.Component {
             </div>
             <div className="results">
               <p>If you left today, you would miss out on:</p>
-              <p>{this.getCuffValue()}</p>
+              <p className="cuff-value">{this.getCuffValue()}</p>
             </div>
           </section>
         </div>
-        <section className="content">
-          <h2>Definition</h2>
-          <p>{content.definition[0]}</p>
-          <p>{content.definition[1]}</p>
-        </section>
-        <section className="content">
-          <h2>Background</h2>
-          <p>{content.background[0]}</p>
-        </section>
         <Footer />
       </div>
     );

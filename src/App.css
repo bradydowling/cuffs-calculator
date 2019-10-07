@@ -1,7 +1,17 @@
 .App-header {
-  background-color: #A30B06;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 4px solid #A30B06;
+}
+
+.App-header h1 {
   text-align: center;
+}
+
+.App-header p {
+  text-align: justify;
+  width: 500px;
 }
 
 .calculator-wrapper {
@@ -31,18 +41,28 @@
   font-size: 14px;
 }
 
-.calculator input {
+.calculator .prompt input {
   width: 100%;
-  border-radius: 3px;
+  border-radius: 1px;
   display:block;
-  border:2px solid #2980B9;
+  border:1px solid #AAA;
   padding:.5rem;
   font-size:18px;
+}
+
+.calculator .prompt input:active, .calculator .prompt input:focus {
+  padding-bottom: .4;
+  border-bottom: .16667rem solid;
+  border-bottom-color: #3139f2;
 }
 
 .calculator .results {
   font-size: calc(10px + 2vmin);
   text-align: center;
+}
+
+.calculator .results p.cuff-value {
+  font-size: 3.5rem;
 }
 
 .content, footer {
