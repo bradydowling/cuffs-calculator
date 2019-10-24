@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 const Footer = () => (
@@ -13,44 +13,39 @@ const content = {
   ]
 };
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: localStorage.getItem('cuffValue') || 1000,
-      cuffDate: localStorage.getItem('cuffDate'),
-      releaseDate: localStorage.getItem('releaseDate')
-    };
+const App = () => {
+  const [value, setValue] = useState(localStorage.getItem('cuffValue') || 1000);
+  const [cuffDate, setCuffDate] = useState(localStorage.getItem('cuffDate'));
+  const [releaseDate, setReleaseDate] = useState(localStorage.getItem('releaseDate'));
+
+  const cuffDateChange = (newCuffDate) => {
+    setCuffDate(newCuffDate);
+    localStorage.setItem('cuffDate', newCuffDate);
   }
 
-  cuffDateChange(cuffDate) {
-    this.setState({ cuffDate });
-    localStorage.setItem('cuffDate', cuffDate);
+  const freedomDateChange = (newReleaseDate) => {
+    setReleaseDate(newReleaseDate);
+    localStorage.setItem('releaseDate', newReleaseDate);
   }
 
-  freedomDateChange(releaseDate) {
-    this.setState({ releaseDate });
-    localStorage.setItem('releaseDate', releaseDate);
+  const valueChange = (newValue) => {
+    setValue(newValue);
+    localStorage.setItem('cuffValue', newValue);
   }
 
-  valueChange(value) {
-    this.setState({ value });
-    localStorage.setItem('cuffValue', value);
-  }
-
-  getCuffTimeDetails() {
-    if (!this.state.cuffDate || !this.state.releaseDate) {
+  const getCuffTimeDetails = () => {
+    if (!cuffDate || !releaseDate) {
       return {};
     }
     var dashReplacer = /-/gi;
-    const cuffDate = new Date(this.state.cuffDate.replace(dashReplacer, '/'));
+    const cuffDateObj = new Date(cuffDate.replace(dashReplacer, '/'));
     const todayDate = new Date();
-    const releaseDate = new Date(this.state.releaseDate.replace(dashReplacer, '/'));
-    const totalCuffTime = Math.abs(releaseDate - cuffDate);
+    const releaseDateObj = new Date(releaseDate.replace(dashReplacer, '/'));
+    const totalCuffTime = Math.abs(releaseDateObj - cuffDateObj);
     const totalCuffDays = Math.ceil(totalCuffTime / (1000 * 60 * 60 * 24));
-    const servedCuffTime = Math.abs(todayDate - cuffDate);
+    const servedCuffTime = Math.abs(todayDate - cuffDateObj);
     const servedCuffDays = Math.ceil(servedCuffTime / (1000 * 60 * 60 * 24));
-    const remainingCuffTime = Math.abs(releaseDate - todayDate);
+    const remainingCuffTime = Math.abs(releaseDateObj - todayDate);
     const remainingCuffDays = Math.ceil(remainingCuffTime / (1000 * 60 * 60 * 24));
     return {
       total: totalCuffDays,
@@ -59,52 +54,50 @@ class App extends React.Component {
     };
   }
 
-  getCuffValue() {
-    const cuffDetails = this.getCuffTimeDetails();
-    if (!cuffDetails.remaining || !cuffDetails.total || !this.state.value) {
+  const getCuffValue = () => {
+    const cuffDetails = getCuffTimeDetails();
+    if (!cuffDetails.remaining || !cuffDetails.total || !value) {
       return '$0';
     }
-    const cuffValue = cuffDetails.remaining / cuffDetails.total * this.state.value;
-    return `$${this.numberWithCommas(cuffValue.toFixed(2))}`;
+    const cuffValue = cuffDetails.remaining / cuffDetails.total * value;
+    return `$${numberWithCommas(cuffValue.toFixed(2))}`;
   }
 
-  numberWithCommas(x) {
+  const numberWithCommas = (x) => {
     let parts = x.toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
   }
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Golden Handcuff Calculator</h1>
-          <p>{content.definition[0]}</p>
-        </header>
-        <div className="calculator-wrapper">
-          <section className="calculator">
-            <div className="prompt">
-              <label htmlFor="start-date">Current job start date</label>
-              <input type="date" name="start-date" value={this.state.cuffDate} onChange={e => { this.cuffDateChange(e.target.value); }}></input>
-            </div>
-            <div className="prompt">
-              <label htmlFor="vesting-date">Vesting date</label>
-              <input type="date" name="vesting-date" value={this.state.releaseDate} onChange={e => { this.freedomDateChange(e.target.value); }}></input>
-            </div>
-            <div className="prompt">
-              <label htmlFor="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
-              <input type="number" name="cuff-value" value={this.state.value} min="0" step=".01" onChange={e => { this.valueChange(e.target.value); }}></input>
-            </div>
-            <div className="results">
-              <p>If you left today, you would miss out on:</p>
-              <p className="cuff-value">{this.getCuffValue()}</p>
-            </div>
-          </section>
-        </div>
-        <Footer />
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Golden Handcuff Calculator</h1>
+        <p>{content.definition[0]}</p>
+      </header>
+      <div className="calculator-wrapper">
+        <section className="calculator">
+          <div className="prompt">
+            <label htmlFor="start-date">Current job start date</label>
+            <input type="date" name="start-date" value={cuffDate} onChange={e => { cuffDateChange(e.target.value); }}></input>
+          </div>
+          <div className="prompt">
+            <label htmlFor="vesting-date">Vesting date</label>
+            <input type="date" name="vesting-date" value={releaseDate} onChange={e => { freedomDateChange(e.target.value); }}></input>
+          </div>
+          <div className="prompt">
+            <label htmlFor="cuff-value">Total handcuff value (signing bonus, move cost, etc)</label>
+            <input type="number" name="cuff-value" value={value} min="0" step=".01" onChange={e => { valueChange(e.target.value); }}></input>
+          </div>
+          <div className="results">
+            <p>If you left today, you would miss out on:</p>
+            <p className="cuff-value">{getCuffValue()}</p>
+          </div>
+        </section>
       </div>
-    );
-  }
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
